@@ -1,0 +1,185 @@
+.body {
+  background-color: rgb(165, 163, 163);
+}
+
+.container>span {
+  color: rgb(183, 12, 12);
+  font-size: large;
+  font-weight: 700;
+}
+
+
+/*////////////////////////////////////////////// Estilos De La Navbar ///////////////////////////////////////////////*/
+.titulo {
+  color: rgb(183, 12, 12);
+  font-weight: 700;
+}
+
+.LinksCategory {
+  color: rgb(183, 12, 12) !important;
+  margin-left: 8px;
+  margin-top: 10px;
+  display: block;
+  text-decoration: none;
+  font-weight: 700;
+
+}
+
+.LinksCategory:hover {
+  color: rgb(213, 22, 22) !important;
+  display: block;
+  margin-left: 16px;
+  transform: scale(1.1);
+}
+
+.LinkName {
+  color: rgb(183, 12, 12) !important;
+  font-weight: 700 !important;
+  display: block;
+  text-decoration: none;
+  margin-top: 8px;
+  margin-right: 20px;
+
+}
+
+.LinkName:hover {
+  color: rgb(213, 22, 22) !important;
+  font-weight: 700 !important;
+  transform: scale(1.1);
+}
+
+#DropName {
+  color: rgb(183, 12, 12) !important;
+  font-weight: 700;
+}
+
+#DropName:hover {
+  color: rgb(213, 22, 22) !important;
+  font-weight: 700 !important;
+  transform: scale(1.1);
+}
+
+#BrandNombre {
+  font-weight: 700;
+  font-size: 25px;
+  margin-right: 50px;
+  color: rgb(183, 12, 12) !important;
+
+  text-decoration: none;
+
+}
+
+/*////////////////////////////////////////////// Estilos De Las Cards ///////////////////////////////////////////////*/
+.ContenedorCards {
+  margin-top: 30px !important;
+  width: 100%;
+}
+
+.ImagenCard {
+  height: 170px !important;
+}
+
+.TextoCard {
+  color: rgb(152, 15, 15) !important;
+  font-weight: 700 !important;
+}
+
+.FondoCard {
+  background-color: rgb(108, 108, 108);
+}
+
+.BotonCard {
+  background-color: rgb(152, 15, 15) !important;
+  font-size: 20px;
+  font-weight: 700 !important;
+  color: rgb(168, 163, 163) !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+.BotonCard:hover {
+  background-color: rgb(230, 39, 39) !important;
+  color: rgb(59, 59, 59) !important;
+}
+
+.CardsRopa {
+  margin: 1% !important;
+  width: 15% !important;
+  background-color: rgb(108, 108, 108) !important;
+}
+
+
+/*////////////////////////////////////////////// Estilos De Details ///////////////////////////////////////////////*/
+
+.ContenedorDetail{
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+}
+
+.TitleDetail{
+font-size: 40px;
+margin-bottom: 15px;
+color: rgb(152, 15, 15) !important;
+  font-weight: 700 !important;
+  width: 500px;
+}
+.ImageDetail{
+width: 500px;
+height: 500px;
+margin-left: 5px;
+}
+.DescripDetail{
+  font-size: 20px;
+  margin-top: 200px;
+  width: 500px;
+  color: rgb(152, 15, 15) !important;
+  font-weight: 700 !important;
+
+}
+
+/*////////////////////////////////////////////// Estilos Del Formlario De Contacto ///////////////////////////////////////////////*/
+
+.FormContacto{
+width:700px;
+background-color:rgb(105, 105, 105)  ;
+margin-top:20px;
+margin: 50px;
+padding: 30px;
+border-radius: 10px;
+}
+
+.TitleContacto{
+  font-weight: 700 !important;
+  margin: 20px;
+margin-left: 50px;
+font-size: 40px;
+margin-bottom: 15px;
+color: rgb(152, 15, 15);
+}
+
+.BotonForm {
+  background-color: rgb(152, 15, 15) !important;
+  font-size:20px!important;
+  width: 100px;
+  font-weight: 700 !important;
+  color: rgb(168, 163, 163) !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+.BotonForm:hover {
+  background-color: rgb(230, 39, 39) !important;
+  color: rgb(59, 59, 59) !important;
+}
+
+.LabelForm{
+  font-size: 18px;
+  color: rgb(152, 15, 15) !important;
+  font-weight: 700 !important;
+}
+
+.BackTextContact{
+  background-color: rgb(173, 173, 173)!important;
+  border-color:rgb(99, 99, 99)!important;
+}
