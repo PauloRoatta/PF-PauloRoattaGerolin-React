@@ -1,10 +1,15 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState, useContext} from "react";
+import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 
-import {getFirestore, getDoc, doc} from "firebase/firestore";
+import {
+    getFirestore,
+    collection,
+    getDocs,
+    query,
+    where, 
+} from "firebase/firestore";
 
-import { products } from "../data/products";
 import { ItemList } from "../components/ItemList";
 
 
@@ -15,22 +20,23 @@ export const ItemListContainer = (props) => {
 
 
     useEffect(() => {
-        const mypromise = new Promise((resolve, reject) => {
-            setTimeout(() => { resolve(products) }, 2000)
-        });
+        const db = getFirestore();
 
-        mypromise.then((response) => {
-            if (!id) {
-                setItems(response);
-            } else {
-                const filterByCategory = response.filter(item => item.category === id);
-                setItems(filterByCategory)
-            }
+        const refCollection = !id
+            ? collection(db, "items")
+            : query(collection(db, "items"), where("categoryId", "==", id));
 
+        getDocs(refCollection).then((snapshot) => {
+            if (snapshot.size === 0) console.log("no results");
+            else
+                setItems(
+                    snapshot.docs.map((doc) => {
+                        return { id: doc.id, ...doc.data() };
+                    })
+                );
         });
-        mypromise.catch(error => { console.log("La promise no funciona", error) });
     }, [id]);
-
+  
     return (
         <Container className="ContenedorCards">
             {items ? <><h1 className="titulo">{props.greeting}</h1><ItemList items={items} /></> : <>Loading...</>}

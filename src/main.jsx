@@ -22,7 +22,7 @@ const firebaseConfig = {
 };
 
 
- initializeApp(firebaseConfig);
+ const app = initializeApp(firebaseConfig);
 
 
 

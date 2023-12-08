@@ -1,10 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-
-
-import { products } from "../data/products";
+import { getFirestore, getDoc, doc } from "firebase/firestore";
 import { ItemDetail } from "../components/ItemDetail";
+
 
 
 export const ItemDetailContainer = () => {
@@ -13,18 +12,17 @@ export const ItemDetailContainer = () => {
     const { id } = useParams();
 
 
+
     useEffect(() => {
-        const mypromise = new Promise((resolve, reject) => {
-            setTimeout(() => { resolve(products) }, 2000)
+        const db = getFirestore();
+    
+        const refDoc = doc(db, "items", id);
+    
+        getDoc(refDoc).then((snapshot) => {
+          setItem({ id: snapshot.id, ...snapshot.data() });
         });
+      }, [id]);
 
-        mypromise.then((response) => {
-            const findById = response.find((item) => item.id === Number(id));
-            setItem(findById);
-
-        });
-        mypromise.catch(error => { console.log("La promise no funciona", error) });
-    }, [id]);
 
     return (
         <Container className="mt-4">
