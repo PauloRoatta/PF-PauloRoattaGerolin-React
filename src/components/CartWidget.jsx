@@ -14,7 +14,7 @@ const total = items.reduce((acum,valAct)=>acum+valAct.quantity, 0)
     return (
         <Link to="/cart">
             <img src={Carrito} alt="Carrito" width={40} />
-            <span>{total}</span>
+            <span className="cartWidg" >{total}</span>
         </Link>
     );
 }

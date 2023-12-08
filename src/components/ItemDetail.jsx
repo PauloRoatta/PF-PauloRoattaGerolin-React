@@ -20,7 +20,7 @@ onAdd(item, quantity);
         <div>
                 <h1 className="TitleDetail">{item.title}</h1>
                 <img className="ImageDetail" src={item.pictureUrl} />
-            <h3>Stock: {item.stock}</h3>
+            <h3 className="Stocktext">Stock: {item.stock}</h3>
             </div>
             <div className="DescripDetail">
                 {item.description}

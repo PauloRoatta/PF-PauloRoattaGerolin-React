@@ -11,8 +11,8 @@
 
 /*////////////////////////////////////////////// Estilos De La Navbar ///////////////////////////////////////////////*/
 .titulo {
-  color: rgb(183, 12, 12);
-  font-weight: 700;
+  color: rgb(183, 12, 12)!important;
+  font-weight: 700!important;
 }
 
 .LinksCategory {
@@ -183,3 +183,63 @@ color: rgb(152, 15, 15);
   background-color: rgb(173, 173, 173)!important;
   border-color:rgb(99, 99, 99)!important;
 }
+
+
+/*//////////////////////////////////////////////////////ITEM COUNTER //////////////////////////////////*/
+
+
+.ContenedorDetail2{
+  margin-left: 70px;
+  width:200px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  }
+
+.buttonCount{
+  font-size: 20px;
+  margin-left: 2px;
+  margin-right: 2px;
+  background-color: rgb(105, 104, 104);
+  width: 15px;
+  text-align: center;
+  height: 30px;
+  color: rgb(186, 35, 35) !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+}
+.buttonCount:hover{
+  background-color: rgb(207, 37, 37) !important;
+  color: rgb(52, 49, 49) !important;
+}
+
+  .inputCount{
+margin-bottom:10px;
+width: 25px;
+height: 30px;
+  }
+.Stocktext{
+font-weight: 700 !important;
+font-size: 25px;
+color: rgb(152, 15, 15);
+}
+/*//////////////////////////////////////////////////////CART //////////////////////////////////*/
+  .xcarrito {
+    color: rgb(183, 12, 12)!important;
+    font-weight: 700!important;
+    cursor: pointer;
+    font-size: 30px;
+  }
+  .xcarrito:hover {
+    color: rgb(221, 38, 38)!important;
+  }
+
+  .totalCart{
+    color: rgb(183, 12, 12)!important;
+    font-weight: 700!important;
+  }
+
+  .cartWidg{
+    color: rgb(183, 12, 12) !important;
+    font-weight: 700 !important;
+  }

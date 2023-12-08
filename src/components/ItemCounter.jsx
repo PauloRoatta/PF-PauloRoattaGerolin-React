@@ -28,13 +28,17 @@ export const ItemCounter = ({ onAdd, stock,initial }) => {
    
     return (
         <>
-            <div style={{display:"flex"}}>
-                <div onClick={handleDecreaseCount}> - </div>
-                <input value={count} />
-                <div onClick={handleIncreaseCount}> + </div>
+        <div className="ContenedorDetail2">
+        <div style={{display:"flex"}}>
+                <div className="buttonCount" onClick={handleDecreaseCount}> - </div>
+                <input className="inputCount" value={count} />
+                <div className="buttonCount" onClick={handleIncreaseCount}> + </div>
             </div>
 
-            <button onClick={handleAdd}>Agregar al Carrito</button>
+            <button className="BotonCard" onClick={handleAdd}>Agregar al Carrito</button>
+
+        </div>
+         
 
         </>
     );
