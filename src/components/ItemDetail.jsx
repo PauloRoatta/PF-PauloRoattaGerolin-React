@@ -8,8 +8,9 @@ export const ItemDetail = ({ item }) => {
 
 const {onAdd} = useContext(CartContext);
 
-const Add = () => {
-onAdd(item);
+const Add = (quantity) => {
+    
+onAdd(item, quantity);
 
 };
 
@@ -19,13 +20,14 @@ onAdd(item);
         <div>
                 <h1 className="TitleDetail">{item.title}</h1>
                 <img className="ImageDetail" src={item.pictureUrl} />
+            <h3>Stock: {item.stock}</h3>
             </div>
             <div className="DescripDetail">
                 {item.description}
             </div>
             
         </div>
-        <ItemCounter onAdd={Add}/>
+        <ItemCounter onAdd={Add} stock={item.stock} initial={1}/>
         </>
     );
 

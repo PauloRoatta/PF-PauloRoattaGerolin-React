@@ -1,23 +1,137 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Container } from "react-bootstrap";
-
+import Table from 'react-bootstrap/Table';
 import { CartContext } from "../../Contexts/CartContext";
+import { useNavigate } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import { getFirestore, collection, addDoc, } from "firebase/firestore";
+
 
 export const Cart = () => {
-    const {clear,items} = useContext(CartContext);
+    const { clear, items, onRemove } = useContext(CartContext);
+    const navigate = useNavigate();
+
+    const total = items.reduce((acum,valAct)=>acum+(valAct.quantity*valAct.price), 0)
 
 
- return (
-    <Container className="mt-4">
-        <h1>Carrito</h1>
-        {items?.map((item)=>(<div key={item.id}>
-            <h2>{item.title}</h2>
-            <h3>{`$${item.price}`}</h3>
-            <img src={item.pictureUrl} width={300}/>
-        </div>
-        ))}
-        <button onClick={clear}>Vaciar Carrito</button>
-    </Container>
-);
-   
+    const handleChange = (event) => {
+        setBuyer(buyer => {
+            return {
+                ...buyer,
+                [event.target.name]: event.target.value,
+            }
+        })
+    }
+
+    const initialValues = {
+        name: "",
+        phone: "",
+        email: "",
+        emailrepite:"",
+    };
+
+    const [buyer, setBuyer] = useState(initialValues);
+
+    const sendOrder = () => {
+if((buyer.name=="")||(buyer.phone=="")||(buyer.email=="")||(buyer.emailrepite=="")){
+alert("Rellene el formulario")
+}
+else{
+if(buyer.email!=buyer.emailrepite){
+    alert("Los emails no coinciden")
+}
+else{
+    const order = {
+        buyer,
+        items,
+        total:total,
+    };
+
+    const db = getFirestore();
+    const orderCollection = collection(db, "orders");
+
+    addDoc(orderCollection, order).then(({ id }) => {
+        if (id) {
+            alert("Su orden: " + id + " ha sido completada!");
+            setBuyer(initialValues);
+            clear();
+        }
+    });
+}
+    
+}
+  
+    };
+
+    if (!items.length) {
+        return <Container className="mt-4"><h2>Tu Carrito Esta Vacio</h2><button onClick={() => navigate("/")}>Volver Al Inicio</button></Container>;
+    }
+    const totalPrice = 0;
+    return (
+        <Container className="mt-4">
+            <h1>Carrito</h1>
+
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Imagen</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {items?.map((item) => (
+                        <>
+                            <tr key={item.id}>
+                                <td>{item.title}</td>
+                                <td>{item.quantity}</td>
+                                <td>{`$${item.price}`}</td>
+                                <td><img src={item.pictureUrl} width={300} /></td>
+                                <td onClick={() => onRemove(item.id)}>x</td>
+                            </tr>
+                        </>
+                    ))}
+
+                    <tfoot>
+                        <tr>
+                            <td>Total:{total}</td>
+                        </tr>
+                    </tfoot>
+
+                </tbody>
+            </Table>
+
+            <button onClick={clear}>Vaciar Carrito</button>
+
+            <hr />
+
+            <Form>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" name="email" value={buyer.email} required onChange={handleChange} placeholder="Enter email" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" name="emailrepite" value={buyer.repiteemail} required onChange={handleChange} placeholder="Repite email" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control type="text" name="name" value={buyer.name} required onChange={handleChange} placeholder="Enter your Name" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Phone</Form.Label>
+                    <Form.Control type="text" name="phone" value={buyer.phone} required onChange={handleChange} placeholder="Enter your Phone Number" />
+                </Form.Group>
+                <Button variant="primary" type="submit" onClick={sendOrder}>
+                    Enviar
+                </Button>
+            </Form>
+
+
+        </Container>
+    );
+
 };
